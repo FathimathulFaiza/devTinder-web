@@ -1,7 +1,7 @@
-// rafce
+
 import React from 'react'
 
-const navBar = () => {
+const NavBar = () => {
   return (
         <div className="navbar bg-base-300 shadow-sm">
   <div className="flex-1">
@@ -36,5 +36,5 @@ const navBar = () => {
   )
 }
 
-export default navBar
+export default NavBar
 
