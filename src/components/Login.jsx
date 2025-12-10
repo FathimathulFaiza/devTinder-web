@@ -1,22 +1,33 @@
 import React, { useState } from "react";
 import axios from "axios"
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
 
   // These will store what the user types
   const [emailId, setEmailId] = useState("fathimthulfaiza@gmail.com");
   const [password, setPassword] = useState("Faiza@123");
+  const dispatch = useDispatch()
+   const navigate = useNavigate()
+
 
 // handle the API call - Axios used (network call)
 
    const handleLogin = async ()=>{
+   
 
     try{
-      const res = await axios.post("http://localhost:7777/login", {
+      const res = await axios.post(BASE_URL + "/login", {
         emailId,
         password,
        
       }, { withCredentials: true }  )
+      console.log(res.data);
+      dispatch(addUser(res.data))
+      return navigate("/")
 
     }
     catch(err){
