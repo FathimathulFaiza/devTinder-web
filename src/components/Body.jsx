@@ -32,7 +32,6 @@ const Body = () => {
        navigate("/login")   // if the user is not logged in redirect to login page
     }
    
-    console.error(err)
   }
   }
 
