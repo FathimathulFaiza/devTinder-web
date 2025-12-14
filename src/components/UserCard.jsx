@@ -15,6 +15,11 @@ const UserCard = ({user}) => {
 
  
  const handleSendRequest = async (status,userId)=>{
+
+    if (!_id) {
+      console.error("User _id missing")
+      return
+    }
   try{
     const res = await axios.post(BASE_URL + "/request/send/" + status + "/" + userId,
       {},
@@ -34,7 +39,7 @@ const UserCard = ({user}) => {
         <div className="card bg-base-300 w-96 shadow-sm">
   <figure>
     <img
-      src={user.photoUrl}
+      src={user.photoUrl || "/default-avatar.png"}
       alt="photo" />
   </figure>
   <div className="card-body">

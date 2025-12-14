@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 import React, { useEffect,useState} from 'react'
 import { BASE_URL } from '../utils/constants'
 import { useDispatch, useSelector} from 'react-redux'
@@ -15,7 +14,9 @@ const Feed = () => {
 
 const getFeed = async ()=>{
 
-  if(feed) return
+if (!Array.isArray(feed) || feed.length > 0) return;
+
+  //if(feed.length > 0) return
 try{
   const res = await axios.get(BASE_URL + "/feed",
     {withCredentials : true}
