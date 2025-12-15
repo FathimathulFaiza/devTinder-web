@@ -60,10 +60,13 @@ const Login = () => {
    }
 
   return (
-    <div className="flex justify-center my-10">
-      <div className="card bg-base-300 w-96 shadow-sm">
+   <div className="min-h-screen flex items-center justify-center 
+bg-gradient-to-br from-indigo-100 via-white to-pink-100">
+      <div className="card w-96 
+bg-white/70 backdrop-blur-lg 
+shadow-2xl rounded-2xl border border-white/40">
         <div className="card-body">
-          <h2 className="card-title justify-center">{isLoginForm ? "Login" : "Sign Up"}</h2>
+         <h2 className="card-title justify-center text-2xl font-bold text-indigo-600">{isLoginForm ? "Login" : "Sign Up"}</h2>
 
           <div>
       
@@ -74,7 +77,7 @@ const Login = () => {
               <legend className="fieldset-legend">First Name</legend>
               <input
                 type="text"
-                className="input"
+                className="input input-bordered w-full focus:ring-2 focus:ring-indigo-400"
                 placeholder="Type your First name here"
                 value={firstName}   // show the value
                 onChange={(e) => setFirstName(e.target.value)} // update the value
@@ -88,7 +91,7 @@ const Login = () => {
               <legend className="fieldset-legend">Last Name</legend>
               <input
                 type="text"
-                className="input"
+             className="input input-bordered w-full focus:ring-2 focus:ring-indigo-400"
                 placeholder="Type your Last name here"
                 value={lastName}   // show the value
                 onChange={(e) => setLastName(e.target.value)} // update the value
@@ -100,7 +103,7 @@ const Login = () => {
               <legend className="fieldset-legend">Email ID</legend>
               <input
                 type="text"
-                className="input"
+             className="input input-bordered w-full focus:ring-2 focus:ring-indigo-400"
                 placeholder="Type your Email ID here"
                 value={emailId}   // show the value
                 onChange={(e) => setEmailId(e.target.value)} // update the value
@@ -112,19 +115,27 @@ const Login = () => {
               <legend className="fieldset-legend">Password</legend>
               <input
                 type="password"
-                className="input"
+               className="input input-bordered w-full focus:ring-2 focus:ring-indigo-400"
                 placeholder="Type your Password here"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </fieldset>
           </div>
-         <p className="text-red-500"> {error} </p>
+        {error && (
+  <p className="text-red-500 text-sm text-center mt-2">
+    {error}
+  </p>
+)}
           <div className="card-actions justify-center">
-            <button className="btn btn-primary" onClick={isLoginForm ? handleLogin : handleSignUp}>{isLoginForm ? "Login" : "Sign Up"}</button>
+           <button className="btn w-full 
+bg-gradient-to-r from-indigo-500 to-pink-500 
+text-white border-0 
+hover:scale-[1.02] transition-transform duration-200" onClick={isLoginForm ? handleLogin : handleSignUp}>{isLoginForm ? "Login" : "Sign Up"}</button>
           </div>
             
-            <p className="m-auto cursor-pointer py-2" onClick={()=> setIsLoginForm((value) => !value )}> 
+           <p className="m-auto cursor-pointer py-2 
+text-sm text-indigo-600 hover:underline text-center" onClick={()=> setIsLoginForm((value) => !value )}> 
               {isLoginForm ? "Existing User ? Sign Up Here  "
             : "Existing User ? Login Here" } </p>
 

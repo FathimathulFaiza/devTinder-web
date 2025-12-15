@@ -40,11 +40,14 @@ if(feed.length === 0) return <h1 className='flex justify-center my-10 text-bold'
 
   return (
     feed &&(
-    <div className='flex justify-center my-10'>
-
-      <UserCard user={feed[0]}/>
-
-    </div>
+<div className="min-h-screen bg-gray-50 py-10">
+  <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-indigo-700 dark:text-indigo-400 mb-6 tracking-wide animate-fadeIn font-mono">
+  Code. Connect. Collaborate.
+</h2>
+  <div className='flex justify-center'>
+    <UserCard user={feed[0]} />
+  </div>
+</div>
   )
   )
 }
