@@ -34,7 +34,7 @@ const NavBar = () => {
   <div className="flex-1">
  
 <Link to="/" className="text-2xl font-extrabold text-indigo-600 tracking-wide">
-  DevTinder
+  DevPartner
 </Link>
   </div>
   {user && (
