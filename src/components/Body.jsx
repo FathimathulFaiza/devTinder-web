@@ -29,9 +29,9 @@ const Body = () => {
     }
   }
 
-  // useEffect(() => {
-  //   fetchUser()
-  // }, [])
+  useEffect(() => {
+    fetchUser()
+  }, [])
 
   return (
     <div>

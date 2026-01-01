@@ -4,6 +4,7 @@ import { BASE_URL } from '../utils/constants'
 import { useEffect, useState } from 'react'
 import { addConnections } from '../utils/connectionSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const Connections = () => {
 
@@ -81,7 +82,8 @@ if (connections.length === 0)
         </div>
     </div>
 
-      <div className='text-left mx-6'>
+     <div className="flex justify-between items-center w-full mx-6">
+      <div>
 <h2 className="text-lg font-semibold text-gray-800">
   {firstName} {lastName}
 </h2>
@@ -102,6 +104,19 @@ if (connections.length === 0)
 <p className="text-sm text-gray-600 mt-2">
   {about || "This is a default about the user."}
 </p>
+</div>
+<Link to={"/chat/" + _id}>
+<button
+  className="
+    bg-indigo-600 text-white px-5 py-2 rounded-lg
+    font-medium shadow-md
+    hover:bg-indigo-700 hover:shadow-lg
+    transition duration-300
+  "
+>
+  💬 Chat
+</button>
+</Link>
         </div>    
           </div>
       )

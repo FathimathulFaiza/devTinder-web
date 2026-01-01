@@ -4,6 +4,12 @@ import { BASE_URL } from '../utils/constants'
 
 const Premium = () => {
 
+  const verifyPremiumUser = async ()=>{
+    const res = await axios.get(BASE_URL + "/premium/verify",
+      {withCredentials : true }
+    )
+  }
+
   const handleBuyClick = async (type) =>{
     const order = await axios.post(
       BASE_URL + "/payment/create",
@@ -37,14 +43,13 @@ const {amount, keyId, currency, notes, order_id } = order.data
         theme: {
           color: '#F37254'
         },
+        handler : verifyPremiumUser
+
+        }
       };
 
 
-    const rzp = new window.Razorpay(options);
-      rzp.open();                         // this code will open the razorpay dailogue box -> script
 
-
-}
   return (
  <div className="w-full min-h-screen bg-gray-50 flex items-center justify-center px-4">
   <div className="flex flex-col md:flex-row gap-8 max-w-5xl w-full">

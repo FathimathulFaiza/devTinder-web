@@ -16,6 +16,7 @@ import Refund from "./pages/Refund";
 import Contact from "./pages/Contact";
 import Shipping from "./pages/Shipping";
 import Pricing from "./pages/Pricing";
+import Chat from "./components/Chat";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="connections" element={<Connections />} />
             <Route path="requests" element={<Requests />} />
             <Route path="premium" element={<Premium />} />
+            <Route path="chat/:targetUserId" element={<Chat />} />
           </Route>
 
         </Routes>
