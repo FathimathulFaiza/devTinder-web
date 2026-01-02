@@ -25,7 +25,7 @@ const Premium = () => {
 
 // after creating the order should open the razorpay dailogue box
 
-const {amount, keyId, currency, notes, order_id } = order.data
+const {amount, keyId, currency, notes, orderId } = order.data
 
     const options = {
         key: keyId , // Replace with your Razorpay key_id
@@ -33,10 +33,10 @@ const {amount, keyId, currency, notes, order_id } = order.data
         currency ,
         name: 'Dev Partner',
         description: 'Connect to Other Developers..',
-        order_id , // This is the order_id created in the backend
+        order_id : orderId, // This is the order_id created in the backend
         
         prefill: {
-          name: notes.fiestName + " " + notes.lastName,
+          name: notes.firstName + " " + notes.lastName,
           email: notes.emailId,
           contact: '9999999999'
         },
@@ -46,7 +46,10 @@ const {amount, keyId, currency, notes, order_id } = order.data
         handler : verifyPremiumUser
 
         }
+        const rzp = new window.Razorpay(options)
+rzp.open()
       };
+
 
 
 
