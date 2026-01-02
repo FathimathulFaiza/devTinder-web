@@ -1,9 +1,8 @@
-// utils/socket.js (frontend)
 import { io } from "socket.io-client";
 
 const SOCKET_URL =
   import.meta.env.MODE === "production"
-    ? "https://devpartner.work"
+    ? "http://devpartner.work:7777" // Change https to http and add :7777
     : "http://localhost:7777";
 
 export const createSocketconnection = () => {
