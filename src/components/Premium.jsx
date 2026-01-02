@@ -9,47 +9,48 @@ const Premium = () => {
       {withCredentials : true }
     )
   }
+const handleBuyClick = async (type) => {
+    try {
+      const orderResponse = await axios.post(
+        BASE_URL + "/payment/create",
+        { membershipType: type },
+        { withCredentials: true }
+      );
 
-  const handleBuyClick = async (type) =>{
-    const order = await axios.post(
-      BASE_URL + "/payment/create",
-     {
-      membershipType : type
-    },
-    {withCredentials : true}
-  )
-  console.log(order)
+      const { amount, keyId, currency, notes, orderId } = orderResponse.data;
 
-
-
-
-// after creating the order should open the razorpay dailogue box
-
-const {amount, keyId, currency, notes, orderId } = order.data
-
-    const options = {
-        key: keyId , // Replace with your Razorpay key_id
-        amount , // Amount is in currency subunits.
-        currency ,
+      const options = {
+        key: keyId,
+        amount,
+        currency,
         name: 'Dev Partner',
         description: 'Connect to Other Developers..',
-        order_id : orderId, // This is the order_id created in the backend
-        
+        order_id: orderId,
         prefill: {
           name: notes.firstName + " " + notes.lastName,
           email: notes.emailId,
           contact: '9999999999'
         },
-        theme: {
-          color: '#F37254'
-        },
-        handler : verifyPremiumUser
-
+        theme: { color: '#F37254' },
+        handler: async (response) => {
+          // This runs after successful payment
+          await verifyPremiumUser();
+          alert("Payment Successful! You are now a Premium member.");
+          window.location.href = "/"; // Redirect to home
         }
-        const rzp = new window.Razorpay(options)
-rzp.open()
       };
 
+      if (!window.Razorpay) {
+        alert("Razorpay SDK failed to load. Are you online?");
+        return;
+      }
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.error("Payment Error:", err);
+    }
+  };
 
 
 
