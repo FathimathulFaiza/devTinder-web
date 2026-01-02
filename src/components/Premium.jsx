@@ -122,4 +122,4 @@ const handleBuyClick = async (type) => {
   )
 }
 
-export default Premium
+export default Premium``
